@@ -1,13 +1,12 @@
-from pydantic import BaseSettings,SettingsConfigDict
+from pydantic_settings import BaseSettings
+
 
 class Settings(BaseSettings):
-    mongodb_url:str="mongodb://localhost:27017"
-    database_name:str="sentinel_rca"
+    MONGODB_URL: str
+    DATABASE_NAME: str
 
-    model_config = SettingsConfigDict(
-        env_file=".env",
-        env_file_encoding="utf-8",
-        extra="ignore"
-    )
+    class Config:
+        env_file = ".env"
+
 
 settings = Settings()
