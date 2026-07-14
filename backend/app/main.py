@@ -1,12 +1,15 @@
 from fastapi import FastAPI
 from app.api.routes.health import router as health_router
 from app.api.routes.incidents import router as incident_router
+from app.api.routes.logs import router as logs_router
 
 app = FastAPI(
     title="INCIDENTIQ API",
     description="AI-Powered Incident Intelligence Platform",
     version="0.1.0",
 )
+
+app.include_router(logs_router, prefix="/api")
 
 app.include_router(health_router, prefix="/api")
 app.include_router(incident_router, prefix="/api")
