@@ -1,13 +1,13 @@
 from pydantic import BaseModel
-from typing import Optional
 from datetime import datetime
 
 
-class LogEntry(BaseModel):
+class LogCreate(BaseModel):
     incident_id: str
-    timestamp: Optional[datetime] = None
-    service: str
+    timestamp:str
     level: str
+    service: str
+    message: str
     raw_log: str
-    normalized_log: Optional[str] = None
-    created_at: datetime = datetime.utcnow()
+    normalized_log: str
+    created_at: datetime
