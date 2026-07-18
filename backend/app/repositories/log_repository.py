@@ -1,6 +1,6 @@
 from app.core.database import db
 
-class Repository:
+class LogRepository:
     
     collection=db.logs
 
@@ -15,7 +15,7 @@ class Repository:
         logs=[]
 
         async for log in cls.collection.find({"incident_id":incidient_id}):
-            log["_id"]=str(log["_id"])
+            log["id"]=str(log["_id"])
             log.pop("_id")
             logs.append(log)
         return logs
