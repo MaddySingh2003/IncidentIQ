@@ -19,3 +19,13 @@ class LogRepository:
             log.pop("_id")
             logs.append(log)
         return logs
+
+
+    @classmethod
+    async def get_log_by_incidents(cls, incident_id):
+        logs=[]
+        async for log in cls.collection.find({"incident_id":incident_id}):
+            log["id"]=str(log["_id"])
+            log.pop("_id")
+            logs.append(log)
+        return logs
